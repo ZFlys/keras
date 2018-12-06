@@ -5,7 +5,7 @@ from keras.layers import Dense
 from keras.optimizers import SGD
 import keras
 
-
+#这是撒？
 X, y = Load_Ut_Datas()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1024)
 
