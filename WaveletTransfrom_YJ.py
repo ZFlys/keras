@@ -98,17 +98,25 @@ def plot_wpt(df1, df2, df3, maxlevel, title):
             plt.plot(df_wpt3.index, df_wpt3.iloc[:,i-1])
             #plt.ylim((-35,35))
             plt.title('{}'.format(df_wpt1.columns[i-1]))
-        plt.subplots_adjust(left=None, bottom=None, right=None, top=None, 
+        plt.subplots_adjust(left=None, bottom=None, right=None, top=None,
         wspace=0.6, hspace=0.8)
         plt.suptitle(title)
         plt.show()
+    return df_wpt1,df_wpt2,df_wpt3
     
     
 HDPE_WOOD = pd.concat([df1,df2,df3],axis=1)[70:90.44]
+HDPE_WOOD_2 = pd.concat([df1,df2,df3],axis=1)[73:76]
 HDPE_WOOD.columns = [0,1,2]
 HDPE_WOOD.plot()
-plot_wpt(df1,df2,df3,4,'合格与不合格')
-
+HDPE_WOOD_2.columns = [0,1,2]
+HDPE_WOOD_2.plot()
+plt.title('原始信号')
+df_wpt1,df_wpt2,df_wpt3 = plot_wpt(df1,df2,df3,4, ' ')
+pd.concat(([df_wpt1['adad'],df_wpt2['adad'],df_wpt3['adad']]),axis=1).plot()
+plt.legend([0,1,2])
+plt.title('7.8125-9.375MHz频段')
+plt.show()
 # =============================================================================
 # #导入示例数据测试(DF结构，索引为Time，列为幅值)
 # df = pd.read_pickle('ut_example.pkl')
